@@ -43,7 +43,7 @@ int main(){
 
     }
     printf("Reading value from the Driver\n");
-	ioctl(fd,readkvStore);
+	//ioctl(fd,readkvStore);
     printf("Closing the driver\n");
     close(fd);
     return 0;

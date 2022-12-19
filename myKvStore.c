@@ -113,18 +113,19 @@ int etx_release(struct inode *inode, struct file *filp)
 static long etx_ioctl(struct file *file, unsigned int userCalls, unsigned long arg){
     switch(userCalls){
         case kvWrite:
-            printk("Writing on device...!");
+            printk("Writing to device...!");
             copy_from_user(&userData, (struct dataStruct *) arg, sizeof(userData));
             insertNode(userData, &llHead);
             break;
         case searchANode:
 			printk("Reading from device...!");
             struct dataStruct search1;
-            struct dataStruct rNo;
+            struct dataStruct readN;
             copy_from_user(&search1, (struct dataStruct *) arg, sizeof(search1));
-            rNo = searchNode(search1, &llHead);
-		    if(copy_to_user((struct dataStruct *) arg, &rNo, sizeof(rNo)))
-				printk("error copying data to user :: %s\n", rNo.name);
+            readN = searchNode(search1, &llHead);
+            printk("\tName :: %s -- rNo :: %d", readN.name, readN.rNo);
+		    if(copy_to_user((struct dataStruct *) arg, &readN, sizeof(readN)))
+				printk("error copying data to user");
 
             break;
         case readkvStore: //Display full linked-list
