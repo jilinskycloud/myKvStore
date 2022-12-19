@@ -10,5 +10,5 @@ Check LKM is available at "/dev/" path
 open 2 or 3 terminals to run three processes simutenuasly
 
 ./myKvTest1
-./myKvTest1
-./myKvTest1
+./myKvTest2
+./myKvTest3
