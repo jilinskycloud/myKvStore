@@ -1,12 +1,12 @@
 # myKvStore
 Commands to test 
-  insmod ***.ko
+  insmod myKvStore.ko
 
-Check LKM is available at "/dev/" pth
+Check LKM is available at "/dev/" path
   ls /dev/
 
 open 2 or 3 terminals to run three processes simutenuasly
 
-./p1
-./p2
-./p3
+./myKvTest1
+./myKvTest1
+./myKvTest1
