@@ -150,7 +150,7 @@ static struct file_operations fops = {
 int rw_sem_init(void)
 {
     printk(KERN_INFO "=========================== Initializing the kvStore LKM  Time :: %lld=============================\n", ktime_get());
-    // Try to dynamically allocate a major number for the device -- more difficult but worth it
+    // Try to dynamically allocate a major number for the device 
     majorNumber = register_chrdev(0, DEVICE_NAME, &fops);
     if(majorNumber<0){
         printk(KERN_ALERT "kvStore failed to register a major number\n");
@@ -168,12 +168,12 @@ int rw_sem_init(void)
     // Register the device driver
     kvStoreDevice = device_create(kvStoreClass, NULL, MKDEV(majorNumber, 0), NULL, DEVICE_NAME);
     if (IS_ERR(kvStoreDevice)){               // Clean up if there is an error
-        class_destroy(kvStoreClass);           // Repeated code but the alternative is goto statements
+        class_destroy(kvStoreClass);           // clear the device class
         unregister_chrdev(majorNumber, DEVICE_NAME);
         printk(KERN_ALERT "Failed to create the device\n");
         return PTR_ERR(kvStoreDevice);
     }
-    printk(KERN_INFO "kvStore: device class created correctly\n"); // Made it! device was initialized
+    printk(KERN_INFO "kvStore: device class created correctly\n"); // device was initialized
     //init_rwsem(&rwsema);
 
     return 0;
