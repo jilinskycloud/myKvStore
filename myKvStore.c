@@ -107,7 +107,6 @@ int etx_release(struct inode *inode, struct file *filp)
 
 //  IOCTL Definition
 #define readkvStore _IO('r' , 1)
-#define kvRead _IOR('r', 2, char *)
 #define kvWrite _IOW('r', 3, struct kvStore *)
 #define searchANode _IOWR('r', 4, struct dataStruct *)
 static long etx_ioctl(struct file *file, unsigned int userCalls, unsigned long arg){
