@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Folder name to create
-FOLDER_NAME="/new_root_folder"
+FOLDER_NAME="/root/new_root_folder"
 
 # Check if the script is run as root
 if [ "$EUID" -ne 0 ]; then
